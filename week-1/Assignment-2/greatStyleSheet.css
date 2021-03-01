@@ -9,6 +9,7 @@
 
 body{
   text-align: center;
+  margin: 0 auto;
 }
 
 .main-header{
@@ -29,9 +30,9 @@ body{
   padding: 10px;
   margin: 10px;
   background-color: blue;
-  height: 300px;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto;
+
 }
 
 
@@ -39,6 +40,12 @@ body{
   padding: 50px;
   margin: 3px;
   background-color: lightblue;
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+
+.logo{
+  transition-duration: 0.2s;
 }
 
 /* ============== */
@@ -51,8 +58,17 @@ body{
 }
 
 
-@media(min-width: 1200px){
+@media(min-width: 1199px){
   body{
     width: 1200px;
   }
+}
+
+
+/* ============== */
+
+.logo:hover{
+
+  background-color: blue;
+
 }
