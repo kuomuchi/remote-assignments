@@ -1,11 +1,13 @@
 function max(numbers) { // your code here, for-loop method preferred
-  let biggerOne = 0;
+  let biggerOne = numbers[0];
   for(let i=0; i<numbers.length; i++){
     let challenger = numbers[i];
+    console.log("導入:"+challenger);
     //HERE IS CHALLENGER!!!!
 
     if(challenger > biggerOne){
       biggerOne = challenger;
+      console.log('新的:'+biggerOne);
       //Ah~  Nice <3  Big! 
       //I'm mean number :D
     }

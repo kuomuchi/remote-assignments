@@ -1,53 +1,49 @@
-function max(numbers) { // your code here, for-loop method preferred
-  let biggerOne = 0;
-  for(let i=0; i<numbers.length; i++){
-    let challenger = numbers[i];
-    //HERE IS CHALLENGER!!!!
+function avg(data) { // your code here 
 
-    if(challenger > biggerOne){
-      biggerOne = challenger;
-      //Ah~  Nice <3  Big! 
-      //I'm mean number :D
-    }
-    
+  //console.log(data.products);
+  let Aws = 0;
+
+  for(let i=0; i<data.products.length; i++){
+
+    Aws += data.products[i].price;
   }
+  Aws /= data.products.length;
 
-  return biggerOne; // ME :D the number!
-  
-}
-
-function findPosition(numbers, target) { // your code here, for-loop method preferred 
-  
-  let find = -1;
-
-  //Dora: Hi! I'm Dora!
-  //Dora: where is the number?
-
-  //Me: Here!  ->> target
-
-  for(let i=0; i<numbers.length; i++){
-    if(numbers[i] == target){
-      find = i;
-      break;
-
-    }
-  }
-
-  //me: Hey Dora! Here it's!!
-  //Dora: where?
-  //me: in the "find" variable
-  //Dora: where?
-  
-  return find;
+  return Aws;
 
 }
 
-console.log( max([1, 2, 4, 5]) ); // should print 5 
-console.log( max([5, 2, 7, 1, 6]) ); // should print 7
+console.log(
+  avg({
 
-console.log( findPosition([5, 2, 7, 1, 6], 5) ); // should print 0
-console.log( findPosition([5, 2, 7, 1, 6], 7) ); // should print 2
-console.log( findPosition([5, 2, 7, 7, 7, 1, 6], 7) ); // should print 2 (the first position)
-console.log( findPosition([5, 2, 7, 1, 6], 8) ); // should print -1
 
-//我在這裡看成，要算有多少target。orz
+    size:3, products:[ {
+
+
+      //10瓶麥香
+      name:"Product 1", price:100
+
+
+    }, 
+    {
+
+      //70瓶麥香
+      name:"Product 2", price:700
+
+
+    }, 
+    {
+
+      //25瓶麥香
+      name:"Product 3", price:250
+
+
+    }
+
+
+  ]
+
+
+}) 
+) // should print the average price of all products
+//醫院整間整間住起來！看整7小時！
