@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    var str = xhr.responseText;
+                    var strAry = str.split('+');
+                    var aws = 0;
+                    for(let i=0; i<strAry.length; i++){
+                        aws+= +strAry[i];
+                    }
+                    document.getElementById('aw').textContent = aws;
+                    console.log(strAry);
+                    
+                }
+            }
+            xhr.open('GET', 'http://localhost:3000/data?Number=10');
+            xhr.send();
+        </script>
+
+        
+    </head>
+    
+    <body>
+        <div class="box">
+            <h2 class="title">GIVE ME SOME NUMBER, YOU GOOD PEOPLE!</h2>
+            <div class="num" id='num'>var number = "";</div>
+            <input type="text" class="input">
+            <button class="button" id='button' onclick="sendAJAX() ">sumit</button>
+        </div>
+
+        
+        
+    </body>
+
+    <footer>
+        <div class="box2">
+            <div>The Secret Number</div>
+            <div>It's come from index.js res, but no one like it.</div>
+            <div id='aw'>Here is number</div>
+            <div>RESPONES POWER</div>
+        </div>
+    </footer>
+    <script>
+        var hr = new XMLHttpRequest();
+            hr.onreadystatechange = function(){
+                if(hr.readyState == 4){
+                    var str = hr.responseText;
+                    var strAry = str.split('+');
+                    var aws = 0;
+                    // var input = document.querySelector(".input").value;
+                    
+                    for(let i=0; i<strAry.length; i++){
+                        aws+= +strAry[i];
+                    }
+                    document.getElementById('num').textContent = aws;
+                    console.log(strAry);
+                }
+            }
+            function sendAJAX(){
+                var input = document.querySelector(".input").value;
+                hr.open('GET', "http://localhost:3000/data?Number="+input);
+                hr.send();
+                document.querySelector(".input").value = '';
+            }
+    </script>
+
+    <script src="index.js"></script>
+</html>
