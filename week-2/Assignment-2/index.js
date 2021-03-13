@@ -1,15 +1,15 @@
 function avg(data) { // your code here 
 
   //console.log(data.products);
-  let Aws = 0;
+  let aws = 0;
 
   for(let i=0; i<data.products.length; i++){
 
-    Aws += data.products[i].price;
+    aws += data.products[i].price;
   }
-  Aws /= data.products.length;
+  aws /= data.products.length;
 
-  return Aws;
+  return aws;
 
 }
 
