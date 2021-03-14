@@ -32,16 +32,14 @@ app.get('/data', (req, res) => {
     }else{
         
         let add = ''
-        let aws = 0;
+        let answer = 0;
         for(let i=1; i<= Number; i++){
             add += ""+i+"";
-            aws += i;
+            answer += i;
             if(Number != i){
                 add += ' + ';
             }
-            if(Number % 45 == 0){
-                add += '\n';
-            }
+
         }
         res.send(add);
         console.log(Number);

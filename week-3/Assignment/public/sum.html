@@ -7,11 +7,11 @@
                 if(xhr.readyState == 4){
                     var str = xhr.responseText;
                     var strAry = str.split('+');
-                    var aws = 0;
+                    var answer = 0;
                     for(let i=0; i<strAry.length; i++){
-                        aws+= +strAry[i];
+                        answer+= +strAry[i];
                     }
-                    document.getElementById('aw').textContent = aws;
+                    document.getElementById('aw').textContent = answer;
                     console.log(strAry);
                     
                 }
@@ -48,15 +48,15 @@
             hr.onreadystatechange = function(){
                 if(hr.readyState == 4){
                     var str = hr.responseText;
-                    var strAry = str.split('+');
-                    var aws = 0;
+                    var strcut = str.split('+');
+                    var answer = 0;
                     // var input = document.querySelector(".input").value;
                     
-                    for(let i=0; i<strAry.length; i++){
-                        aws+= +strAry[i];
+                    for(let i=0; i<strcut.length; i++){
+                        answer+= +strcut[i];
                     }
-                    document.getElementById('num').textContent = aws;
-                    console.log(strAry);
+                    document.getElementById('num').textContent = answer;
+                    console.log(strcut);
                 }
             }
             function sendAJAX(){
