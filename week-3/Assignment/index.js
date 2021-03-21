@@ -75,8 +75,6 @@ app.post('/trackName', (req, res) => {
     
     res.cookie('username', req.body.username);
     res.redirect('/myName');
-    
-    
 });
 
 
