@@ -37,8 +37,8 @@ app.get('/creatdb', (req, res)=>{
 
 // //create table
 app.get('/createpostable', () => {
-    let sql = 'CREATE TABLE user(id int AUTO_INCREMENT, email VARCHAR(255), password VARCHAR(255) PRIMARY KEY(id))'
-    db.query('sql', (err, result) =>{
+    let sql = 'CREATE TABLE user(id int AUTO_INCREMENT, email VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))'
+    db.query(sql, (err, result) =>{
         if(err) throw err;
         console.log(result);
         
@@ -53,29 +53,52 @@ app.get('/adduser1', (req, res)=>{
     let query = db.query(sql, post, (err, result) =>{
         if(err) throw err;
         console.log(result);
-        send('hi')
+        
     });
 });
 
 
-// //select users
+//select users
 app.get('/selectusers', (req, res)=>{
     let sql = 'SELECT * FROM user';
-    let query = db.query(sql, (err, result) =>{
+    let b = '';
+    let query = db.query(sql, (err, results) =>{
         if(err) throw err;
-        console.log(result);
+        b = JSON.parse(JSON.stringify(results));
+        console.log(b.length);
+        console.log(results);
     });
 });
 
+var a = '';
+var c = '';
 
-// //select user
+//select user
 app.get('/getuser/:id', (req, res) =>{
     let sql = `SELECT * FROM user WHERE email = ${req.params.id}`;
+    let query = db.query(sql, (err, result) =>{
+        if(err) throw err;
+        
+        a = JSON.stringify(result);
+        let b = JSON.parse(a);
+        console.log(b[0].id);
+    });
+    
 });
 
+ function getl(){
+    let sql = 'SELECT * FROM user';
+    let query = db.query(sql, (err, results) =>{
+        if(err) throw err;
+        c = JSON.parse(JSON.stringify(results));
+    });
+}
+
+getl();
 
 
 
+//listen 300
 app.listen(3000, ()=>{
     console.log('ready 3000');
 });
@@ -87,6 +110,22 @@ app.get('/home', (req, res) =>{
 });
 
 app.post('/home', (req, res) =>{
-    console.log(req.body);
-    res.render('index')
+    getl();
+    for(let x = 1; x<c.length; x++){
+        if(req.body.email == c[x].email && req.body.password == c[x].password){
+            res.render('welcome');
+            return;
+        }else if(req.body.email == c[x].email && req.body.password != c[x].password){
+            res.render('fail');
+        }
+    }
+    let post = {email: req.body.email, password: req.body.password};
+    let sql = 'INSERT INTO user SET ?';
+    let query = db.query(sql, post, (err, result) =>{
+        if(err) throw err;
+        console.log(result);
+        
+    });
+    res.render('signup')
+    
 });
