@@ -115,17 +115,31 @@ app.post('/home', (req, res) =>{
         if(req.body.email == c[x].email && req.body.password == c[x].password){
             res.render('welcome');
             return;
-        }else if(req.body.email == c[x].email && req.body.password != c[x].password){
-            res.render('fail');
         }
     }
+    res.render('fail');
+    
+    
+});
+
+app.get('/sign', (req, res) =>{
+    res.render('signup');
+});
+
+app.post('/sign', (req, res) =>{
+    getl();
+    for(let x = 1; x<c.length; x++){
+        if(req.body.email == c[x].email && req.body.password == c[x].password){
+        res.render('fail');
+        return;
+    }}
+
     let post = {email: req.body.email, password: req.body.password};
     let sql = 'INSERT INTO user SET ?';
     let query = db.query(sql, post, (err, result) =>{
         if(err) throw err;
         console.log(result);
-        
     });
-    res.render('signup')
-    
+    res.render('welcome');
+
 });

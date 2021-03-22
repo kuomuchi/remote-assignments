@@ -3,7 +3,7 @@ const https = require('http');
 
 function ajax(src, callback){ // your code here
 
-  let body = '';
+  let body;
   https.get(src, res =>{
     res.on('data', data =>{
       body += data;
